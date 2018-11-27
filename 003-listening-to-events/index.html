@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="../000-lib/vue.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <div class="title">
+        <h1>Listening to events</h1>
+      </div>
+      <hr>
+
+      <h2>Events</h2>
+      <button v-on:click="increase">Click me to increment first counter, one by one.</button>
+      <p class="output">First counter: {{ firstCounter }}</p>
+      <!-- 👆 The 'increase' method does not take any arguments -->
+      <button v-on:click="increaseByTwo(2, $event)">Click me to increment second counter, two by two</button>
+      <p class="output">Second counter: {{ secondCounter }}</p>
+      <!-- 👆 The 'increaseByTwo' method takes an integer as argument -->
+
+      <h2>Events modifiers</h2>
+      <div v-on:mousemove="updateCoordinates" class="coordinates-block">
+        <p>Move your mouse over this block to update coordinates:</p>
+        <p>{{ x }} / {{ y }}</p>
+        <p v-on:mousemove.stop class='output-deadspot'>Dead spot where coordinates should not update</p>
+      </div>
+      <!-- 👆 The dead spot works thanks to the event modifier `.stop`. Another important one is `.prevent` -->
+      <h2>Keyboard events</h2>
+      <input type="text" placeholder="Type some stuff here" v-on:keyup.enter="alertMe">
+    </div>
+  </div>
+  <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        firstCounter: 0,
+        secondCounter: 0,
+        x: 0,
+        y: 0,
+        userMessage: 'Hello'
+      },
+      methods: {
+        increase: function() {
+          this.firstCounter++;
+        },
+        increaseByTwo: function(step, event) {
+          this.secondCounter += step;
+        },
+        updateCoordinates: function(event) {
+          this.x = event.clientX;
+          this.y = event.clientY;
+        },
+        alertMe: function() {
+          this.userMessage = event.target.value;
+          alert('You typed: ' + this.userMessage);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
