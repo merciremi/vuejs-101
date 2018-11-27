@@ -22,14 +22,18 @@
       <!-- 👆 The 'increaseByTwo' method takes an integer as argument -->
 
       <h2>Events modifiers</h2>
-      <div v-on:mousemove="updateCoordinates" class="coordinates-block">
+      <div v-on:mousemove="updateCoordinates" class="focus-block">
         <p>Move your mouse over this block to update coordinates:</p>
         <p>{{ x }} / {{ y }}</p>
         <p v-on:mousemove.stop class='output-deadspot'>Dead spot where coordinates should not update</p>
       </div>
       <!-- 👆 The dead spot works thanks to the event modifier `.stop`. Another important one is `.prevent` -->
+
       <h2>Keyboard events</h2>
-      <input type="text" placeholder="Type some stuff here" v-on:keyup.enter="alertMe">
+      <input type="text" placeholder="Type some stuff here and see it go live in an alert" v-on:keyup.enter="alertMe">
+      <!-- No need to always write a method to update the value of `userSecondMessage`. It can be accessed and updated directly in the template with $event -->
+      <input type="text" placeholder="Type some other stuff here, press 'enter' and watch it go live below 👇" v-on:keyup.enter="userSecondMessage = $event.target.value">
+      <p>Your message: {{ userSecondMessage }}</p>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -42,7 +46,8 @@
         secondCounter: 0,
         x: 0,
         y: 0,
-        userMessage: 'Hello'
+        userMessage: 'Hello',
+        userSecondMessage: '🤷‍♂️ (nothing yet)'
       },
       methods: {
         increase: function() {

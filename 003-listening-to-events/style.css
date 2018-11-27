@@ -29,6 +29,7 @@ h2 {
 
 input {
   width: 100%;
+  margin-top: 10px;
   font-family: monospace;
 }
 
@@ -41,7 +42,7 @@ p {
   padding-left: 10px;
 }
 
-.coordinates-block {
+.focus-block {
   text-align: center;
   border: 3px solid rgba(106,216,106,0.5);
 }
