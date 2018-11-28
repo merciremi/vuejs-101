@@ -16,12 +16,13 @@
       <button v-on:click="counter++">Increase counter</button>
       <button v-on:click="counter--">Decrease counter</button>
       <p class="output">Counter: {{ counter }}</p>
+       <!-- When a user clicks on the first two buttons, both `result()` and `output` are called because `counter` is updated-->
       <p class="output">Result: {{ result() }}</p>
+      <p class="output">Output: {{ output }}</p>
       <h2>Increase a second counter that do not need to call result()</h2>
+      <!-- When a user clicks on the third button, `result()` is called even though it's not needed. The computed property `compute` is not called because Vuejs knows its content is not needed.  -->
       <button v-on:click="secondCounter++">Increase second counter</button>
-      <p>Second counter: {{ secondCounter }}</p>
-      <!-- Even if result() is not needed when I click on this new button, it's called
-        whenever VueJS renders the page -->
+      <p class="output">Second counter: {{ secondCounter }}</p>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -33,8 +34,19 @@
         counter: 0,
         secondCounter: 0
       },
+      computed: {
+        // output behave like it's being part of data
+        // the template accesses its content and triggers it only if needed
+        // the result of output is cached until it's called again
+        // whereas result() is called everytime the page is rendered and the result is recalculated every time
+        output: function() {
+          console.log('Outputed');
+          return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+        }
+      },
       methods: {
         result: function() {
+          console.log('Methoded');
           return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
         }
       }
