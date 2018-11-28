@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="../000-lib/vue.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <div class="title">
+        <h1>Computed properties</h1>
+      </div>
+      <hr>
+      <h2>Increasing counter with methods</h2>
+      <button v-on:click="increase">Increase counter</button>
+      <button v-on:click="decrease">Decrease counter</button>
+      <p class="output">Counter: {{ counter }}</p>
+      <p class="output">Result: {{ result }}</p>
+    </div>
+  </div>
+  <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        counter: 0,
+        result: ''
+      },
+      methods: {
+        increase: function() {
+          this.counter++;
+          this.result = this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+        },
+        decrease: function() {
+          this.counter--;
+          this.result = this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
