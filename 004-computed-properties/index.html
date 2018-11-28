@@ -13,6 +13,7 @@
       </div>
       <hr>
       <h2>Increasing counter with methods</h2>
+      <p>Counter will reset itself after 3 seconds</p>
       <button v-on:click="counter++">Increase counter</button>
       <button v-on:click="counter--">Decrease counter</button>
       <p class="output">Counter: {{ counter }}</p>
@@ -43,6 +44,18 @@
           console.log('Outputed');
           return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
         }
+      },
+      watch: {
+        // Watch reacts to data changes but is also useful for asynchronous tasks
+        // Set up the property name you want to watch as a key
+        counter: function(value) {
+          // As I have a closure in the callback, I need to store my Vue instance in a var
+          var vueInstance = this;
+          setTimeout(function() {
+            vueInstance.counter = 0;
+          }, 3000)
+        }
+
       },
       methods: {
         result: function() {
