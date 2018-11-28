@@ -17,6 +17,11 @@
       <button v-on:click="counter--">Decrease counter</button>
       <p class="output">Counter: {{ counter }}</p>
       <p class="output">Result: {{ result() }}</p>
+      <h2>Increase a second counter that do not need to call result()</h2>
+      <button v-on:click="secondCounter++">Increase second counter</button>
+      <p>Second counter: {{ secondCounter }}</p>
+      <!-- Even if result() is not needed when I click on this new button, it's called
+        whenever VueJS renders the page -->
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -25,7 +30,8 @@
     new Vue({
       el: '#app',
       data: {
-        counter: 0
+        counter: 0,
+        secondCounter: 0
       },
       methods: {
         result: function() {
