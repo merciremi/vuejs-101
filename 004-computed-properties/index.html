@@ -13,10 +13,10 @@
       </div>
       <hr>
       <h2>Increasing counter with methods</h2>
-      <button v-on:click="increase">Increase counter</button>
-      <button v-on:click="decrease">Decrease counter</button>
+      <button v-on:click="counter++">Increase counter</button>
+      <button v-on:click="counter--">Decrease counter</button>
       <p class="output">Counter: {{ counter }}</p>
-      <p class="output">Result: {{ result }}</p>
+      <p class="output">Result: {{ result() }}</p>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -25,17 +25,11 @@
     new Vue({
       el: '#app',
       data: {
-        counter: 0,
-        result: ''
+        counter: 0
       },
       methods: {
-        increase: function() {
-          this.counter++;
-          this.result = this.counter > 5 ? 'greater than 5' : 'smaller than 5';
-        },
-        decrease: function() {
-          this.counter--;
-          this.result = this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+        result: function() {
+          return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
         }
       }
     });
