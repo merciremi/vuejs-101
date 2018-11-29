@@ -11,9 +11,11 @@
       <div class="title">
         <h1>Dynamic CSS styling</h1>
       </div>
+
       <h2>Click on the first square</h2>
       <div class="square" @click="attachRed = !attachRed" :class="divClasses"></div>
       <div class="square" :class="divClasses"></div>
+
       <h2>Pick a class</h2>
       <div>
         <!-- v-model binds the value to the property taken as argument -->
@@ -24,6 +26,15 @@
       <!-- With the array, the second square have muliple behaviours -->
       <!-- {red: attachRed} means pick red if the attachRed property is true -->
       <div class="square":class="[color, {red: attachRed}]"></div>
+
+      <h2>Style components without classes</h2>
+      <div>
+        <!-- v-model binds the value to the property taken as argument -->
+        <input type="text" placeholder="Pick the squares' color" v-model="otherColor">
+        <input type="text" placeholder="Pick the 2nd square' width" v-model="width">
+      </div>
+      <div class="square" :style="{ backgroundColor: otherColor }"></div>
+      <div class="square" :style="myStyle"></div>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -33,13 +44,21 @@
       el: '#app',
       data: {
         attachRed: false,
-        color: ""
+        color: "",
+        otherColor: "",
+        width: null
       },
       computed: {
         divClasses: function() {
           return {
             red: this.attachRed,
             blue: !this.attachRed
+          }
+        },
+        myStyle: function() {
+          return {
+            backgroundColor: this.otherColor,
+            width: this.width + 'px'
           }
         }
       }
