@@ -33,8 +33,11 @@
         <input type="text" placeholder="Pick the squares' color" v-model="otherColor">
         <input type="text" placeholder="Pick the 2nd square' width" v-model="width">
       </div>
+      <!-- Vuejs prefix all style in :style to work with browsers supporting Vuejs -->
       <div class="square" :style="{ backgroundColor: otherColor }"></div>
       <div class="square" :style="myStyle"></div>
+      <!-- Using array to pass a JS object on the fly -->
+      <div class="square" :style="[myStyle, {height: width + 'px'}]"></div>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
