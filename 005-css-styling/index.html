@@ -19,7 +19,7 @@
       <h2>Pick a class</h2>
       <div>
         <!-- v-model binds the value to the property taken as argument -->
-        <input type="text" placeholder="Pick a color: blue, red, green or yellow" v-model="color">
+        <input type="text" placeholder="Pick a color: red, blue, yellow or green" v-model="color">
       </div>
       <!-- :class can take a property name or an array with several types in it -->
       <div class="square" :class="color"></div>
@@ -32,12 +32,20 @@
         <!-- v-model binds the value to the property taken as argument -->
         <input type="text" placeholder="Pick the squares' color" v-model="otherColor">
         <input type="text" placeholder="Pick the 2nd square' width" v-model="width">
+        <div class="checkbox">
+          <label for="circles">Turn these squares into circles?</label>
+          <input type="checkbox" id="circles" @click="circled = !circled">
+        </div>
       </div>
       <!-- Vuejs prefix all style in :style to work with browsers supporting Vuejs -->
-      <div class="square" :style="{ backgroundColor: otherColor }"></div>
-      <div class="square" :style="myStyle"></div>
+      <div class="square" :style="{ backgroundColor: otherColor }" :class="updateShape"></div>
+      <div class="square" :style="myStyle" :class="updateShape"></div>
       <!-- Using array to pass a JS object on the fly -->
-      <div class="square" :style="[myStyle, {height: width + 'px'}]"></div>
+      <div class="square" :style="[myStyle, {height: width + 'px'}]" :class="updateShape"></div>
+
+      <h2>Make a progress bar with setInterval</h2>
+      <button v-on:click="startProgress">Start Progress</button>
+      <div class="progress-bar" :style="{width: progressBarWidth + 'px'}"></div>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -49,7 +57,9 @@
         attachRed: false,
         color: "",
         otherColor: "",
-        width: null
+        width: null,
+        circled: false,
+        progressBarWidth: 10
       },
       computed: {
         divClasses: function() {
@@ -63,6 +73,33 @@
             backgroundColor: this.otherColor,
             width: this.width + 'px'
           }
+        },
+        updateShape: function() {
+          return {
+            square: !this.circled,
+            circle: this.circled
+          }
+        }
+      },
+      watch: {
+        progressBarWidth: function(value) {
+          if (this.progressBarWidth == 500) {
+            var vm = this;
+            setTimeout(function() {
+              vm.progressBarWidth = 10;
+            },2000)
+          }
+        }
+      },
+      methods: {
+        startProgress: function() {
+          var vm = this;
+          setInterval(function(){
+            if (vm.progressBarWidth < 500) {
+              console.log('Ok');
+              vm.progressBarWidth += 10;
+            }
+          },100)
         }
       }
     });
