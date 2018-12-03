@@ -51,6 +51,7 @@ new Vue({
       var points = Math.floor(Math.random() * 10) + 10;
       this.userHealth += points;
       this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
+      this.nextLogId += 1;
       this.attackFromMonster();
     },
     giveUp: function() {
@@ -58,9 +59,9 @@ new Vue({
     },
     logFormatting: function(log) {
       if (log.recipient == null) {
-        return log.sender + ' ' + log.action + ' for ' + log.points + ' points.'
+        return log.id + ' - ' + log.sender + ' ' + log.action + ' for ' + log.points + ' points.'
       } else {
-        return log.sender + ' ' + log.action + ' ' + log.recipient + ' for ' + log.points + ' points.'
+        return log.id + ' - ' + log.sender + ' ' + log.action + ' ' + log.recipient + ' for ' + log.points + ' points.'
       }
     },
     logClass: function(log) {
