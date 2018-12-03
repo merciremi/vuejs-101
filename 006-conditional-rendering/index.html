@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="../000-lib/vue.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <div class="title">
+        <h1>Conditional Rendering</h1>
+      </div>
+
+      <h2>v-if and v-else</h2>
+      <!-- v-if and v-else detach elements from the dom -->
+      <p v-if="attach">🐵 You can see me!</p>
+      <p v-else>🙈 Now you can't see me!</p>
+      <button @click="attach = !attach">Detach the monkey from the dom</button>
+      <hr>
+
+      <h2>v-show</h2>
+      <!-- if we wanna keep the element in the dom and hide it with css, use v-show -->
+      <div class="margin">
+        <p v-show="show">🙈 Do you also see me?</p>
+        <button v-if="show" @click="show = !show">Hide the monkey</button>
+        <button v-else="show" @click="show = !show">Show the monkey</button>
+      </div>
+    </div>
+  </div>
+  <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        attach: true,
+        show: true
+      }
+    });
+  </script>
+</body>
+</html>
