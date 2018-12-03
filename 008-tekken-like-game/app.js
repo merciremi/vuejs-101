@@ -2,14 +2,11 @@ new Vue({
   el: '#app',
   data: {
     startGame: true,
-    user: {
-      health: 100
-    },
-    monster: {
-      health: 100
-    },
+    userHealth: 100,
+    monsterHealth: 100,
     nextLogId: 1,
-    logs: []
+    logs: [],
+    winner: ''
   },
   methods: {
     attack: function() {
@@ -18,26 +15,26 @@ new Vue({
     },
     attackFromUser: function() {
       var points = Math.floor(Math.random() * 10) + 1;
-      this.monster.health -= points;
+      this.monsterHealth -= points;
       this.logs.push({id: this.nextLogId, sender: 'user', recipient:'monster', action: 'hits', points: points });
       this.nextLogId += 1;
     },
     attackFromMonster: function() {
       var points = Math.floor(Math.random() * 10) + 1;
-      this.user.health -= points;
+      this.userHealth -= points;
       this.logs.push({id: this.nextLogId, sender: 'monster', recipient:'user', action: 'hits', points: points });
       this.nextLogId += 1;
     },
     specialAttack: function() {
       var points = Math.floor(Math.random() * 10) + 10;
-      this.monster.health -= points;
+      this.monsterHealth -= points;
       this.logs.push({id: this.nextLogId, sender: 'user', recipient:'monster', action: 'hits', points: points });
       this.nextLogId += 1;
       this.attackFromMonster();
     },
     heal: function() {
       var points = Math.floor(Math.random() * 10) + 10;
-      this.user.health += points;
+      this.userHealth += points;
       this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
       this.attackFromMonster();
     },
