@@ -8,6 +8,18 @@ new Vue({
     logs: [],
     winner: ''
   },
+  watch: {
+    userHealth: function(value) {
+      if (value <= 0) {
+        alert('You lost buddy');
+      }
+    },
+    monsterHealth: function(value) {
+      if (value <= 0) {
+        alert('You win!');
+      }
+    }
+  },
   methods: {
     attack: function() {
       this.attackFromUser();
