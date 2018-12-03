@@ -1,7 +1,7 @@
 new Vue({
   el: '#app',
   data: {
-    startGame: true,
+    gameIsRunning: false,
     userHealth: 100,
     monsterHealth: 100,
     nextLogId: 1,
@@ -21,6 +21,9 @@ new Vue({
     }
   },
   methods: {
+    startGame: function() {
+      this.gameIsRunning = !this.gameIsRunning
+    },
     attack: function() {
       this.attackFromUser();
       this.attackFromMonster();
