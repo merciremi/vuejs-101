@@ -36,7 +36,7 @@
         <button @click="attack" id="attack">ATTACK</button>
         <button @click="specialAttack" id="special-attack">SPECIAL ATTACK</button>
         <button @click="heal" id="heal">HEAL</button>
-        <button id="give-up">GIVE UP</button>
+        <button @click="giveUp" id="give-up">GIVE UP</button>
       </div>
     </section>
     <section class="row log">
@@ -92,6 +92,9 @@
           this.user.health += points;
           this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
           this.attackFromMonster();
+        },
+        giveUp: function() {
+          location.reload();
         }
       }
     });
