@@ -9,17 +9,18 @@
   <div class="container">
     <div id="app">
       <div class="title">
-        <h1>Lists Rendering</h1>
+        <h1>List Rendering: v-for</h1>
       </div>
 
-      <h2>v-for</h2>
+      <h2>Looping through arrays</h2>
       <div class="output">
         <p>My ingredients:</p>
         <ul>
           <!-- in the parenthesis below, the first el is always the element itself, then the index -->
-          <li v-for="(ingredient, index) in ingredients">{{ ingredient }} (index: {{ index}})</li>
+          <li v-for="(ingredient, index) in ingredients" :key="ingredient">{{ ingredient }} (index: {{ index}})</li>
         </ul>
       </div>
+      <button @click="ingredients.push('butter')">Add butter to the list</button>
 
       <h2>Alternative syntax</h2>
       <template v-for="(ingredient, index) in ingredients">
@@ -28,6 +29,34 @@
           <p>Index: {{ index }}</p>
         </div>
       </template>
+
+      <hr>
+
+      <h2>Looping through objects</h2>
+      <div class="output">
+        <ul>
+          <li v-for="(person, index) in people">Our guest #{{ index + 1 }} is {{ person.name }} (age: {{ person.age }} / eyes: {{ person.eyeColor }})</li>
+        </ul>
+      </div>
+
+      <h2>Looping through keys and values</h2>
+      <div class="output">
+        <ul>
+          <li v-for="person in people">
+            <div v-for="(value, key) in person">{{ key }}: {{ value }}</div>
+          </li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <h2>Looping through numbers</h2>
+      <div class="output">
+        <ul>
+          <!-- Vuejs convert the number as the end of a range starting at 1 -->
+          <li v-for="n in 10">{{ n }}</li>
+        </ul>
+      </div>
     </div>
   </div>
   <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
@@ -38,8 +67,8 @@
       data: {
         ingredients: ['pears', 'ginger bread', 'red wine'],
         people: [
-          {name: 'Remi', age: 34, eyesColor: 'chestnut'},
-          {name: 'Bob', age: 36, eyesColor: 'blue'}
+        {name: 'Remi', age: 34, eyeColor: 'chestnut'},
+        {name: 'Bob', age: 36, eyeColor: 'blue'}
         ]
       }
     });
