@@ -42,8 +42,8 @@
     <section class="row log">
       <div class="small-12 columns">
         <ul>
-          <li>
-
+          <li v-for="log in logs">
+            <div :class="logClass(log)">{{ logFormatting(log) }}</div>
           </li>
         </ul>
       </div>
@@ -95,6 +95,19 @@
         },
         giveUp: function() {
           location.reload();
+        },
+        logFormatting: function(log) {
+          if (log.recipient == null) {
+            return log.sender + ' ' + log.action + ' for ' + log.points + ' points.'
+          } else {
+            return log.sender + ' ' + log.action + ' ' + log.recipient + ' for ' + log.points + ' points.'
+          }
+        },
+        logClass: function(log) {
+          return {
+            'player-turn': log.sender == 'user',
+            'monster-turn': log.sender == 'monster'
+          }
         }
       }
     });
