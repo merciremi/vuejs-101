@@ -26,12 +26,12 @@
             </div>
         </div>
     </section>
-    <section class="row controls">
+    <section v-if="startGame" class="row controls">
         <div class="small-12 columns">
-            <button id="start-game">START NEW GAME</button>
+            <button @click="startGame = !startGame" id="start-game">START NEW GAME</button>
         </div>
     </section>
-    <section class="row controls">
+    <section v-else class="row controls">
         <div class="small-12 columns">
             <button id="attack">ATTACK</button>
             <button id="special-attack">SPECIAL ATTACK</button>
@@ -49,5 +49,13 @@
         </div>
     </section>
 </div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      startGame: true
+    }
+  });
+</script>
 </body>
 </html>
