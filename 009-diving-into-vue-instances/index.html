@@ -7,12 +7,25 @@
 </head>
 <body>
   <div class="container">
-    <div id="app">
-      <div class="title">
-        <h1>{{ title }}</h1>
-      </div>
-      <button v-on:click="show">Show Paragraph</button>
+
+    <div class="title">
+      <h1>Diving into the VueJS instance</h1>
+    </div>
+
+    <div id="app1">
+      <h2>{{ title }}</h2>
+      <button @click="show">Show paragraph</button>
       <p v-if="showParagraph" class="output">This is not always visible</p>
+      <hr>
+    </div>
+
+    <!-- You can have multiple Vue instances in a page depending on the business logic -->
+    <div id="app2">
+      <h2>{{ title }}</h2>
+      <button @click="revealImage">Show me the GIF</button>
+      <div class="margin-top">
+        <img v-if="showImage" :src="imageUrl">
+      </div>
     </div>
   </div>
 

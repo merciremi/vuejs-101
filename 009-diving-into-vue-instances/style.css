@@ -45,3 +45,7 @@ footer {
   padding-left: 20px;
   border-left: 3px solid rgba(106,216,106,0.5);
 }
+
+.margin-top {
+  margin-top: 30px;
+}
