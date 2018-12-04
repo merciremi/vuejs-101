@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="../000-lib/vue.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <div class="title">
+        <h1>{{ title }}</h1>
+      </div>
+      <button v-on:click="show">Show Paragraph</button>
+      <p v-if="showParagraph" class="output">This is not always visible</p>
+    </div>
+  </div>
+
+  <footer>Made with ❤️ and 💻 by Rémi Mercier.</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
