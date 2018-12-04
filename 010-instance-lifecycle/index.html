@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="../000-lib/vue.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <div id="app">
+      <div class="title">
+        <h1>{{ title }}</h1>
+      </div>
+      <button @click="title = 'Title is now updated!'">Change title</button>
+      <button @click="destroy">Destroy current instance</button>
+    </div>
+
+    <script src="app.js"></script>
+  </div>
+</body>
+</html>
