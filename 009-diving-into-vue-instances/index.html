@@ -14,7 +14,8 @@
 
     <div id="app1">
       <h2>{{ title }}</h2>
-      <button @click="show">Show paragraph</button>
+      <!-- ref is a key accessible through $refs that capture the content of the tag -->
+      <button @click="show" ref="myButton">Show paragraph</button>
       <p v-if="showParagraph" class="output">This is not always visible</p>
       <hr>
     </div>

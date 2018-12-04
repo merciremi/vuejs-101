@@ -8,6 +8,8 @@ var vm1 = new Vue({
     show: function() {
       this.showParagraph = true;
       this.updateTitle('The first VueJS instance (Updated)');
+      // $refs stores all ref tags written in HTML template
+      this.$refs.myButton.innerText = 'Paragraph is now visible';
     },
     updateTitle: function(title) {
       this.title = title;
@@ -49,3 +51,8 @@ var vm2 = new Vue({
 setTimeout(function() {
   vm2.title = 'Title changed by timer coded outsite of said instance'
 },2000);
+
+// When an instance is created, VueJS gives each data and method, getters and setters
+// But when you add a property to an instance from outside, Vue does not do it
+vm1.newMethod = 'New method!';
+console.log(vm1);
