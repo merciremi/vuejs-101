@@ -5,8 +5,7 @@ new Vue({
     userHealth: 100,
     monsterHealth: 100,
     nextLogId: 1,
-    logs: [],
-    winner: ''
+    logs: []
   },
   watch: {
     userHealth: function(value) {
@@ -48,10 +47,17 @@ new Vue({
       this.attackFromMonster();
     },
     heal: function() {
-      var points = Math.floor(Math.random() * 10) + 10;
-      this.userHealth += points;
-      this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
-      this.nextLogId += 1;
+      if (this.userHealth < 90) {
+        var points = Math.floor(Math.random() * 10) + 10;
+        this.userHealth += points;
+        this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
+        this.nextLogId += 1;
+      } else {
+        var points = 100 - this.userHealth;
+        this.userHealth = 100;
+        this.logs.push({id: this.nextLogId, sender: 'user', action: 'heals himself', points: points });
+        this.nextLogId += 1;
+      }
       this.attackFromMonster();
     },
     giveUp: function() {
