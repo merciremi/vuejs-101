@@ -23,6 +23,8 @@
     <div id="app2">
       <h2>{{ title }}</h2>
       <button @click="revealImage">Show me the GIF</button>
+      <span>or</span>
+      <button @click="changeFirstInstanceTitle">Change the title of the first instance above</button>
       <div class="margin-top">
         <img v-if="showImage" :src="imageUrl">
       </div>

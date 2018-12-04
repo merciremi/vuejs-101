@@ -1,4 +1,4 @@
-new Vue({
+var vm1 = new Vue({
   el: '#app1',
   data: {
     title: 'A first VueJS instance',
@@ -26,8 +26,8 @@ new Vue({
 });
 
 // You can have multiple Vue instances in a page depending on the business logic
-// Each instance cannot (so far) access each other information
-new Vue({
+// Instances cannot be accessed from outsite except when stored in a variable
+var vm2 = new Vue({
   el: '#app2',
   data: {
     title: 'The second VueJS instance',
@@ -37,6 +37,15 @@ new Vue({
   methods: {
     revealImage: function() {
       this.showImage = true
+    },
+    changeFirstInstanceTitle: function() {
+      vm1.title = 'Title changed by second Vue instance!'
     }
   }
 });
+
+// When instances are stored in variables, you can access them with JS from outside
+// thanks to VueJS proxying data, methods, etc...
+setTimeout(function() {
+  vm2.title = 'Title changed by timer coded outsite of said instance'
+},2000);
