@@ -15,7 +15,6 @@
     <div id="app">
       <h2>App #1</h2>
       <my-cmp></my-cmp>
-      <hr class="half-width">
       <my-cmp></my-cmp>
     </div>
 
@@ -23,8 +22,9 @@
 
     <div id="app2">
       <h2>App #2</h2>
+      <!-- We call the component my-cmp but when it becomes a local component
+        (versus a global one), app2 can't use it anymore -->
       <my-cmp></my-cmp>
-      <hr class="half-width">
       <my-cmp></my-cmp>
     </div>
 

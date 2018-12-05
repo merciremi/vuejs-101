@@ -1,5 +1,8 @@
-// Create a global component
-Vue.component('my-cmp', {
+// Create a global component accessible by all instances
+// Vue.component('my-cmp', {});
+
+// Transform the global component into a local one using var
+var cmp = {
   // In a component, data is a function
   data: function() {
     return {
@@ -12,10 +15,14 @@ Vue.component('my-cmp', {
       this.status = 'Normal';
     }
   }
-});
+};
 
 new Vue({
-  el: '#app'
+  el: '#app',
+  // This is where you link a local component to an instance
+  components: {
+    'my-cmp': cmp
+  }
 });
 
 new Vue({
