@@ -24,5 +24,11 @@ export default {
     'app-servers': AppServers,
     'app-servers-detail': ServersDetail
   }
-}
+};
 </script>
+
+<style>
+  h1, p, li {
+    font-family: monospace;
+  }
+</style>

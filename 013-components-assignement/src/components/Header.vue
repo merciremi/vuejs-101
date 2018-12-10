@@ -8,8 +8,11 @@
   </div>
 </template>
 
-<script>
-export default {
-
+<!-- Scoped limitate style scope to this component only -->
+<style scoped>
+h1 {
+  font-weight: bold;
+  border-bottom: 3px solid rgba(106,216,106,0.5);
+  box-shadow: inset 0 -8px 0 rgba(106,216,106,0.5);
 }
-</script>
+</style>
