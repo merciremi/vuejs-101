@@ -26,4 +26,12 @@
     }
   }
 }
+
+hr {
+  border-style: solid;
+  width: 50%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #5BB884;
+}
 </style>

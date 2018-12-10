@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <hr>
     <div>
       <span class="status">Bob Status:</span> {{ status }}
       <button @click="changeStatus">Change Bob Status</button>
@@ -35,14 +34,6 @@ export default {
     &:hover {
       background-color: #249153;
     }
-  }
-
-  hr {
-    border-style: solid;
-    width: 50%;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    color: #5BB884;
   }
 
   .status {
