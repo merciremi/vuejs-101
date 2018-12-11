@@ -2,20 +2,75 @@
   <div class="user-edit">
     <h3>Edit {{ user.firstName }}'s details here:</h3>
     <p>This is child component #2.</p>
+    <p>{{user.stack}}</p>
     <div class="input-fields">
-      <input type="text" placeholder="Update your first name">
-      <input type="text" placeholder="Update your last name">
-      <input type="text" placeholder="Update your avatar URL">
-      <input type="text" placeholder="Update your occupation">
-      <input type="text" placeholder="Update your technical stack">
-      <input type="text" placeholder="Update your website URL">
+      <input type="text" placeholder="Update your first name" ref="firstName">
+      <input type="text" placeholder="Update your last name" ref="lastName">
+      <input type="text" placeholder="Update your avatar URL" ref="avatarUrl">
+      <input type="text" placeholder="Update your occupation" ref="occupation">
+      <input type="text" placeholder="Update your technical stack" ref="stack">
+      <input type="text" placeholder="Update your website URL" ref="websiteUrl">
+      <button @click="updateUser">Save changes</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['user']
+  props: ['user'],
+  methods: {
+    updateUser() {
+      this.updateFirstName();
+      this.updateLastName();
+      this.updateAvatarUrl();
+      this.updateOccupation();
+      this.updateWebsiteUrl();
+      this.updateStack();
+    },
+    updateFirstName() {
+      let newFirstName = this.cleanInput(this.$refs.firstName.value);
+      if (newFirstName.length > 0) {
+        this.user.firstName = newFirstName;
+      }
+    },
+    updateLastName() {
+      let newLastName = this.cleanInput(this.$refs.lastName.value);
+      if (newLastName.length > 0) {
+        this.user.lastName = newLastName;
+      }
+    },
+    updateAvatarUrl() {
+      let newAvatarUrl = this.cleanInput(this.$refs.avatarUrl.value);
+      if (newAvatarUrl.length > 0) {
+        this.user.avatarUrl = newAvatarUrl;
+      }
+    },
+    updateOccupation() {
+      let newOccupation = this.cleanInput(this.$refs.occupation.value);
+      if (newOccupation.length > 0) {
+        this.user.occupation = newOccupation;
+      }
+    },
+    updateWebsiteUrl() {
+      let newWebsiteUrl = this.cleanInput(this.$refs.websiteUrl.value);
+      if (newWebsiteUrl.length > 0) {
+        this.user.websiteUrl = newWebsiteUrl;
+      }
+    },
+    updateStack() {
+      let newStack = this.stringToArray(this.$refs.stack.value);
+      console.log(newStack);
+      if (newStack[0].length > 0) {
+        this.user.stack = newStack;
+      }
+    },
+    cleanInput(input) {
+      return input.trim().toLowerCase();
+    },
+    stringToArray(string) {
+      return string.trim().split(',');
+    }
+  }
 };
 </script>
 

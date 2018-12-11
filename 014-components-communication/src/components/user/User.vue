@@ -10,18 +10,18 @@
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail :user="user"></app-user-detail>
+        <appUserDetail  :user="user"/>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <app-user-edit :user="user"></app-user-edit>
+        <appUserEdit  :user="user"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import UserDetail from '@/components/user/UserDetail.vue';
-import UserEdit from '@/components/user/UserEdit.vue';
+import UserDetail from '@/components/user/UserDetail'
+import UserEdit from '@/components/user/UserEdit'
 
 export default {
   data () {
@@ -42,8 +42,8 @@ export default {
     }
   },
   components: {
-    'app-user-detail': UserDetail,
-    'app-user-edit': UserEdit
+    appUserDetail: UserDetail,
+    appUserEdit: UserEdit
   }
 };
 </script>
