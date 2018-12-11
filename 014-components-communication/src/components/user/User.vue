@@ -4,7 +4,7 @@
       <div class="contact-avatar"></div>
       <div class="contact-info">
         <h2>{{ fullName() }}</h2>
-        <p>This is the parent component.</p>
+        <p>(This is the parent component.)</p>
       </div>
     </div>
     <hr>
@@ -50,7 +50,9 @@ export default {
 
 <style scoped>
 .component {
+  margin: 10px;
   background-color: rgba(238, 238, 238, 0.5);
+  border: 10px solid rgba(106,216,106,0.5);
 }
 
 .contact {

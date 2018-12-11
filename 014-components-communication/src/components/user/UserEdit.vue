@@ -1,8 +1,7 @@
 <template>
   <div class="user-edit">
     <h3>Edit {{ user.firstName }}'s details here:</h3>
-    <p>This is child component #2.</p>
-    <p>{{user.stack}}</p>
+    <p>(This is child component #2.)</p>
     <div class="input-fields">
       <input type="text" placeholder="Update your first name" ref="firstName">
       <input type="text" placeholder="Update your last name" ref="lastName">
@@ -86,5 +85,13 @@ input {
   display: block;
   width: 100%;
   margin: 10px 10px 10px  0;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  background-color: rgba(102, 204, 153, 1);
+  color: white;
+  font-weight: bold;
 }
 </style>

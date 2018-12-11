@@ -1,7 +1,7 @@
 <template>
   <div class="user-details">
     <h3>{{ user.firstName }}</h3>
-    <p>This is child component #1.</p>
+    <p>(This is child component #1.)</p>
     <ul>
       <li>Occupation:
         <span v-if="user.occupation.length > 0">{{ user.occupation }}</span>
