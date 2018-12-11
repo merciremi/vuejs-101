@@ -10,7 +10,7 @@
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail></app-user-detail>
+        <app-user-detail :user="user"></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
         <app-user-edit></app-user-edit>
@@ -52,6 +52,7 @@ export default {
 .component {
   background-color: rgba(238, 238, 238, 0.5);
 }
+
 .contact {
   text-align: left;
 }
