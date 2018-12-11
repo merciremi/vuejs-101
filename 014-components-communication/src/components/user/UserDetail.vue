@@ -45,5 +45,6 @@ a {
   padding: 5px 20px 10px 20px;
   margin: 20px;
   background-color: rgba(232, 236, 241, 1);
+  border-bottom: 10px solid rgba(106,216,106,0.2);
 }
 </style>
