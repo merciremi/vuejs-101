@@ -1,10 +1,10 @@
 <template>
   <div class="component">
     <div class="contact">
-      <div class="contact-avatar"></div>
+      <img :src="user.avatarUrl" alt="">
       <div class="contact-info">
-        <h2>{{ fullName() }}</h2>
-        <p>(This is the parent component.)</p>
+        <h2 class="capitalize">{{ fullName() }}</h2>
+        <p class="component-notice">(This is the parent component.)</p>
       </div>
     </div>
     <hr>
@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       user: {
-        firstName: 'Rémi',
+        firstName: 'Rémy',
         lastName: 'Mercier',
         occupation: '',
         avatarUrl: '',
@@ -63,11 +63,11 @@ export default {
   display: inline-block;
 }
 
-.contact-avatar {
+img {
   display: inline-block;
   width: 50px;
   height: 50px;
-  margin: 0 20px;
+  margin: -40px 20px 0px 20px;
   border-radius: 50%;
   background-color: rgba(102, 204, 153, 1);
 }

@@ -1,15 +1,15 @@
 <template>
   <div class="user-edit">
     <h3>Edit {{ user.firstName }}'s details here:</h3>
-    <p>(This is child component #2.)</p>
+    <p class="component-notice">(This is child component #2.)</p>
     <div class="input-fields">
       <input type="text" placeholder="Update your first name" ref="firstName">
       <input type="text" placeholder="Update your last name" ref="lastName">
-      <input type="text" placeholder="Update your avatar URL" ref="avatarUrl">
+      <input type="url" placeholder="Update your avatar URL" ref="avatarUrl">
       <input type="text" placeholder="Update your occupation" ref="occupation">
       <input type="text" placeholder="Update your technical stack" ref="stack">
-      <input type="text" placeholder="Update your website URL" ref="websiteUrl">
-      <button @click="updateUser">Save changes</button>
+      <input type="url" placeholder="Update your website URL" ref="websiteUrl">
+      <input type="submit" value="Save changes" @click="updateUser" class="submit-button">
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
       }
     },
     cleanInput(input) {
-      return input.trim().toLowerCase();
+      return input.trim();
     },
     stringToArray(string) {
       return string.trim().split(',');
@@ -76,7 +76,7 @@ export default {
 <style scoped>
 .user-edit {
   text-align: left;
-  padding: 20px;
+  padding: 5px 20px 10px 20px;
   margin: 20px;
   background-color: rgba(232, 236, 241, 1);
 }
@@ -87,7 +87,7 @@ input {
   margin: 10px 10px 10px  0;
 }
 
-button {
+.submit-button {
   border: none;
   padding: 10px 20px;
   background-color: rgba(102, 204, 153, 1);
