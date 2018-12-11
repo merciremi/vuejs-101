@@ -12,8 +12,10 @@
         <span v-else>No stack indicated yet</span>
       </li>
       <li>Website:
-        <span v-if="user.websiteUrl.length > 0">{{ user.websiteUrl}}</span>
-        <span v-else>No wesite indicated yet</span>
+        <span v-if="user.websiteUrl.length > 0">
+          <a :href="user.websiteUrl">{{ user.websiteUrl}}</a>
+        </span>
+        <span v-else>No website indicated yet</span>
       </li>
     </ul>
   </div>
