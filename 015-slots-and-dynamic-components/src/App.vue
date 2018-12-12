@@ -17,6 +17,7 @@
         </component :is="selectedComponent">
       </div>
     </div>
+    <p>Made with ❤️ and 💻 by Rémi Mercier in <span class="date">{{ new Date().getFullYear() }}</span></p>
   </div>
 </template>
 
