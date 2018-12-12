@@ -8,7 +8,7 @@
       <input type="url" placeholder="Update your avatar URL" pattern="https:\/\/.*|http:\/\/.*" ref="avatarUrl">
       <input type="text" placeholder="Update your occupation" ref="occupation">
       <input type="text" placeholder="Update your technical stack: Rails, Javascript, etc..." ref="stack">
-      <input type="url" placeholder="Update your website URL" pattern="https:\/\/.*|http:\/\/.*" oninvalid="this.setCustomValidity('Enter a valid URL (starting with http:// or https://)')" ref="websiteUrl">
+      <input type="url" placeholder="Update your website URL" pattern="https:\/\/.*|http:\/\/.*" ref="websiteUrl">
       <input type="submit" value="Save changes" class="submit-button">
     </form>
   </div>
