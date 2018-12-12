@@ -1,0 +1,3 @@
+<template>
+  <h1>Add your quote ✍️</h1>
+</template>
