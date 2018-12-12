@@ -2,15 +2,15 @@
   <div class="user-edit">
     <h3>Edit {{ user.firstName }}'s details here:</h3>
     <p class="component-notice">(This is child component #2.)</p>
-    <div class="input-fields">
+    <form v-on:submit.prevent="updateUser" class="input-fields">
       <input type="text" placeholder="Update your first name" ref="firstName">
       <input type="text" placeholder="Update your last name" ref="lastName">
-      <input type="url" placeholder="Update your avatar URL" ref="avatarUrl">
+      <input type="url" placeholder="Update your avatar URL" pattern="https:\/\/.*|http:\/\/.*" ref="avatarUrl">
       <input type="text" placeholder="Update your occupation" ref="occupation">
-      <input type="text" placeholder="Update your technical stack" ref="stack">
-      <input type="url" placeholder="Update your website URL" ref="websiteUrl">
-      <input type="submit" value="Save changes" @click="updateUser" class="submit-button">
-    </div>
+      <input type="text" placeholder="Update your technical stack: Rails, Javascript, etc..." ref="stack">
+      <input type="url" placeholder="Update your website URL" pattern="https:\/\/.*|http:\/\/.*" oninvalid="this.setCustomValidity('Enter a valid URL (starting with http:// or https://)')" ref="websiteUrl">
+      <input type="submit" value="Save changes" class="submit-button">
+    </form>
   </div>
 </template>
 
@@ -31,37 +31,42 @@ export default {
       if (newFirstName.length > 0) {
         this.user.firstName = newFirstName;
       }
+      this.$refs.firstName.value = '';
     },
     updateLastName() {
       let newLastName = this.cleanInput(this.$refs.lastName.value);
       if (newLastName.length > 0) {
         this.user.lastName = newLastName;
       }
+      this.$refs.lastName.value = '';
     },
     updateAvatarUrl() {
       let newAvatarUrl = this.cleanInput(this.$refs.avatarUrl.value);
       if (newAvatarUrl.length > 0) {
         this.user.avatarUrl = newAvatarUrl;
       }
+      this.$refs.avatarUrl.value = '';
     },
     updateOccupation() {
       let newOccupation = this.cleanInput(this.$refs.occupation.value);
       if (newOccupation.length > 0) {
         this.user.occupation = newOccupation;
       }
+      this.$refs.occupation.value = '';
     },
     updateWebsiteUrl() {
       let newWebsiteUrl = this.cleanInput(this.$refs.websiteUrl.value);
       if (newWebsiteUrl.length > 0) {
         this.user.websiteUrl = newWebsiteUrl;
       }
+      this.$refs.websiteUrl.value = '';
     },
     updateStack() {
       let newStack = this.stringToArray(this.$refs.stack.value);
-      console.log(newStack);
       if (newStack[0].length > 0) {
         this.user.stack = newStack;
       }
+      this.$refs.stack.value = '';
     },
     cleanInput(input) {
       return input.trim();
