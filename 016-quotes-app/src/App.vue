@@ -4,12 +4,12 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <appNewQuote :quotesRepository="quotesRepository"></appNewQuote>
+          <appNewQuote :quotes="quotes"></appNewQuote>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          {{ quotesRepository.quotes }}
+          <appQuotesList :quotes="quotes"></appQuotesList>
         </div>
       </div>
       <div class="row">
@@ -26,21 +26,23 @@
 import Navigation from '@/components/shared/Navigation.vue'
 import Footer from '@/components/shared/Footer.vue'
 import NewQuote from '@/components/quote/NewQuote.vue'
+import QuotesList from '@/components/quote/QuotesList.vue'
 
 export default {
   name: 'app',
   data() {
     return {
-      quotesRepository: {
+      quotes: {
         nextQuoteId: 1,
-        quotes: []
+        all: []
       }
     }
   },
   components: {
     appNavigation: Navigation,
     appFooter: Footer,
-    appNewQuote: NewQuote
+    appNewQuote: NewQuote,
+    appQuotesList: QuotesList
   }
 };
 </script>
