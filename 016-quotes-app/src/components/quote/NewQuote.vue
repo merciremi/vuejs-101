@@ -1,7 +1,7 @@
 <template>
   <div class="new-quote">
     <form action="/" @submit.prevent="addQuote">
-      <p>Jot your new quote here mate:</p>
+      <h3>Jot your new quote here ✍️</h3>
       <textarea id="new-quote" rows="5" ref="quote">
 
       </textarea>
@@ -35,11 +35,21 @@ export default {
 .new-quote {
   display: block;
   width: 100%;
-  border: 1px solid gray;
   padding: 30px;
 }
+
+textarea {
+  width: 70%;
+  border:3px solid rgba(106,216,106,1);
+}
+
 input {
   display: block;
   margin: 10px auto;
+  background-color: rgba(106,216,106,1);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 30px;
 }
 </style>

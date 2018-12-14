@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <appNavigation/>
+    <appCounter :quotes="quotes.all"></appCounter>
     <div class="container">
       <div class="row">
-        <p>{{ quotes.all }}</p>
         <div class="col-xs-12">
           <appNewQuote :quotes="quotes"></appNewQuote>
         </div>
@@ -15,7 +15,6 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <appCounter :quotes="quotes.all"></appCounter>
         </div>
       </div>
     </div>

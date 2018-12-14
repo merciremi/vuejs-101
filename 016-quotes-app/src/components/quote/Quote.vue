@@ -12,7 +12,7 @@ export default {
 <style scoped>
 .quote {
   display: inline-block;
-  width: 20%;
+  width: 30%;
   padding: 10px;
   margin: 10px;
   border: 3px solid rgba(106,216,106,1);

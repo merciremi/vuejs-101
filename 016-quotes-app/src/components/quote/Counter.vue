@@ -37,24 +37,26 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .counter {
   width: 100%;
-  background-color: lightgrey;
+  margin-top: -10px;
+  background-color: rgba(238, 238, 238, 1);
 }
 
 .progress {
   margin: 0;
   color: white;
   min-width: 50px;
+  border-radius: 0;
   transition: width 500ms;
 }
 
 .green {
-  background-color: green;
+  background-color: rgba(106,216,106,1);
 }
 
 .red {
-  background-color: red;
+  background-color: rgba(236, 100, 75, 1);
 }
 </style>
