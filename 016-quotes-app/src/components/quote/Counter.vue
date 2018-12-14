@@ -1,7 +1,8 @@
 <template>
   <div class="counter">
     <div class="progress" :style="counterProgress" :class="updateCounterColour">
-      <p >{{ quotes.length }} / 10</p>
+      <p v-if="quotes.length < 10">{{ quotes.length }} / 10</p>
+      <p v-else>You've reached your maximum quotes count. Delete some quotes to add new ones.</p>
     </div>
   </div>
 </template>
@@ -42,6 +43,7 @@ export default {
   width: 100%;
   margin-top: -10px;
   background-color: rgba(238, 238, 238, 1);
+  border: none;
 }
 
 .progress {
@@ -49,6 +51,7 @@ export default {
   color: white;
   min-width: 50px;
   border-radius: 0;
+  border: none;
   transition: width 500ms;
 }
 

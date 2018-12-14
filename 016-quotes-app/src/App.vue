@@ -3,7 +3,7 @@
     <appNavigation/>
     <appCounter :quotes="quotes.all"></appCounter>
     <div class="container">
-      <appNewQuote :quotes="quotes"></appNewQuote>
+      <appNewQuote :quotes="quotes" @quoteAdded="newQuote"></appNewQuote>
       <appQuotesList :quotes="quotes"></appQuotesList>
     </div>
     <appFooter/>
@@ -24,6 +24,17 @@ export default {
       quotes: {
         nextQuoteId: 1,
         all: []
+      }
+    }
+  },
+  methods: {
+    newQuote(quote) {
+      console.log(quote);
+      if (this.quotes.all.length < 10) {
+        this.quotes.all.push(
+          {id: this.quotes.nextQuoteId, content: quote}
+          );
+        this.quotes.nextQuoteId++;
       }
     }
   },

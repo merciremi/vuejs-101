@@ -5,7 +5,7 @@
         <form action="/" @submit.prevent="addQuote">
           <h3>Jot your new quote here ✍️</h3>
           <textarea id="new-quote" rows="5" ref="quote"></textarea>
-          <input type="submit" value="Add that quote">
+          <input type="submit" value="Add that quote" :disabled="quotes.all.length == 10">
         </form>
       </div>
     </div>
@@ -17,13 +17,7 @@ export default {
   props: ['quotes'],
   methods: {
     addQuote() {
-      if (this.quotes.all.length < 10) {
-        console.log('in');
-        this.quotes.all.push(
-          {id: this.quotes.nextQuoteId, content: this.$refs.quote.value}
-          );
-        this.quotes.nextQuoteId++;
-      }
+      this.$emit('quoteAdded', this.$refs.quote.value);
       this.cleanForm();
     },
     cleanForm() {
@@ -53,5 +47,9 @@ input {
   font-weight: bold;
   border: none;
   padding: 10px 30px;
+}
+
+input:disabled{
+  background-color: rgba(238, 238, 238, 1);
 }
 </style>
