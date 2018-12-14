@@ -1,11 +1,15 @@
 <template>
-  <div class="quotes-list">
-    <h3>Your quotes:</h3>
-    <p>Delete your quotes by clicking on 'em.</p>
-    <div class="quotes-grid">
-      <appQuote v-for="(quote, index) in quotes.all" @click.native="deleteQuote(index)">
-        {{ quote.content }}
-      </appQuote>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="quotes-list">
+        <h3>Your quotes:</h3>
+        <p>Delete your quotes by clicking on 'em.</p>
+        <div class="quotes-grid">
+          <appQuote v-for="(quote, index) in quotes.all" @click.native="deleteQuote(index)">
+            {{ quote.content }}
+          </appQuote>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -3,20 +3,8 @@
     <appNavigation/>
     <appCounter :quotes="quotes.all"></appCounter>
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <appNewQuote :quotes="quotes"></appNewQuote>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <appQuotesList :quotes="quotes"></appQuotesList>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-        </div>
-      </div>
+      <appNewQuote :quotes="quotes"></appNewQuote>
+      <appQuotesList :quotes="quotes"></appQuotesList>
     </div>
     <appFooter/>
   </div>

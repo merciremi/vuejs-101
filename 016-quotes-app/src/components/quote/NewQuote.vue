@@ -1,12 +1,14 @@
 <template>
-  <div class="new-quote">
-    <form action="/" @submit.prevent="addQuote">
-      <h3>Jot your new quote here ✍️</h3>
-      <textarea id="new-quote" rows="5" ref="quote">
-
-      </textarea>
-      <input type="submit" value="Add that quote">
-    </form>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="new-quote">
+        <form action="/" @submit.prevent="addQuote">
+          <h3>Jot your new quote here ✍️</h3>
+          <textarea id="new-quote" rows="5" ref="quote"></textarea>
+          <input type="submit" value="Add that quote">
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
