@@ -15,10 +15,13 @@ export default {
   props: ['quotes'],
   methods: {
     addQuote() {
-      this.quotes.all.push(
-        {id: this.quotes.nextQuoteId, content: this.$refs.quote.value}
-        );
-      this.quotes.nextQuoteId++;
+      if (this.quotes.all.length < 10) {
+        console.log('in');
+        this.quotes.all.push(
+          {id: this.quotes.nextQuoteId, content: this.$refs.quote.value}
+          );
+        this.quotes.nextQuoteId++;
+      }
       this.cleanForm();
     },
     cleanForm() {
