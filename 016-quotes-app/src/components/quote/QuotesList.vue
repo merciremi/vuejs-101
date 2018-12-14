@@ -1,15 +1,24 @@
 <template>
   <div class="quotes-list">
-    <p>{{ quotes.all }}</p>
-    <ul>
-      <li v-for="quote in quotes.all">{{ quote.content }}</li>
-    </ul>
+    <appQuote v-for="(quote, index) in quotes.all" @click.native="deleteQuote(index)">
+      {{ quote.content }}
+    </appQuote>
   </div>
 </template>
 
 <script>
+import Quote from '@/components/quote/Quote.vue'
+
 export default {
-  props: ['quotes']
+  props: ['quotes'],
+  components: {
+    appQuote: Quote
+  },
+  methods: {
+    deleteQuote(index) {
+      this.quotes.all.splice(index, 1);
+    }
+  }
 };
 </script>
 
