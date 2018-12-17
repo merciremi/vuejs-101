@@ -25,11 +25,13 @@
           </div>
           <div class="form-group">
             <label for="age">Age</label>
+            <!-- Here's what v-model does behind the scene -->
             <input
             type="number"
             id="age"
             class="form-control"
-            v-model.lazy="userData.age">
+            :value="userData.age"
+            @input="userData = $event.target.value"
           </div>
 
         </div>
