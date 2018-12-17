@@ -7,19 +7,21 @@
           <hr>
           <div class="form-group">
             <label for="email">Mail</label>
+            <!-- .trim remove whitespaces -->
             <input
             type="text"
             id="email"
             class="form-control"
-            v-model="userData.email">
+            v-model.trim="userData.email">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
+            <!-- .lazy postpone update till user click on something else -->
             <input
             type="password"
             id="password"
             class="form-control"
-            v-model="userData.password">
+            v-model.lazy="userData.password">
           </div>
           <div class="form-group">
             <label for="age">Age</label>
@@ -27,7 +29,7 @@
             type="number"
             id="age"
             class="form-control"
-            v-model="userData.age">
+            v-model.lazy="userData.age">
           </div>
 
         </div>
