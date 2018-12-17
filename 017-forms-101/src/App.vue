@@ -49,16 +49,19 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <div class="form-group">
             <label for="sendmail">
+              <!-- Vuejs will detect the two checkboxes and merge the two values sent to the same property in an array -->
               <input
               type="checkbox"
               id="sendmail"
-              value="SendMail"> Send Mail
+              value="SendMail"
+              v-model="newsletters"> Send Mail
             </label>
             <label for="sendInfomail">
               <input
               type="checkbox"
               id="sendInfomail"
-              value="SendInfoMail"> Send Infomail
+              value="SendInfoMail"
+              v-model="newsletters"> Send Infomail
             </label>
           </div>
 
@@ -67,16 +70,21 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="male">
+            <!-- VueJS does two things here:
+            - Fugures that the two radio buttons belongs together since they share the same v-model
+            - Store the value of the radio button selected in property -->
             <input
             type="radio"
             id="male"
-            value="Male"> Male
+            value="Male"
+            v-model="gender"> Male
           </label>
           <label for="female">
             <input
             type="radio"
             id="female"
-            value="Female"> Female
+            value="Female"
+            v-model="gender"> Female
           </label>
         </div>
       </div>
@@ -110,12 +118,13 @@
         <p>Mail: {{ userData.email }}</p>
         <p>Password: {{ userData.password }}</p>
         <p>Age: {{ userData.age }}</p>
+        <!-- white-space: pre => CSS style to display multiline message -->
         <p style="white-space: pre">Message: {{ message }}</p>
         <p><strong>Send Mail?</strong></p>
         <ul>
-          <li></li>
+          <li v-for="newsletter in newsletters">{{ newsletter }}</li>
         </ul>
-        <p>Gender:</p>
+        <p>Gender: {{ gender }}</p>
         <p>Priority:</p>
         <p>Switched:</p>
       </div>
@@ -134,7 +143,9 @@ export default {
         password: '',
         age: null
       },
-      message: 'A short message'
+      message: 'A short message',
+      newsletters: [],
+      gender: ''
     }
   }
 }
