@@ -31,9 +31,8 @@
             id="age"
             class="form-control"
             :value="userData.age"
-            @input="userData = $event.target.value"
+            @input="userData = $event.target.value">
           </div>
-
         </div>
       </div>
       <div class="row">
@@ -66,7 +65,6 @@
               v-model="newsletters"> Send Infomail
             </label>
           </div>
-
         </div>
       </div>
       <div class="row">
@@ -103,6 +101,11 @@
         </select>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <appSwitch v-model="dataSwitch"></appSwitch>
+      </div>
+    </div>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -131,7 +134,7 @@
         </ul>
         <p>Gender: {{ gender }}</p>
         <p>Priority: {{ selectedPriority }}</p>
-        <p>Switched:</p>
+        <p>Switched: {{ dataSwitch }}</p>
       </div>
     </div>
   </div>
@@ -140,6 +143,7 @@
 </template>
 
 <script>
+import Switch from '@/components/Switch.vue'
 export default {
   data() {
     return {
@@ -152,8 +156,12 @@ export default {
       newsletters: [],
       gender: '',
       priorities: ['High', 'Medium', 'Low'],
-      selectedPriority: 'Medium'
+      selectedPriority: 'Medium',
+      dataSwitch: true
     }
+  },
+  components: {
+    appSwitch: Switch
   }
 }
 </script>
