@@ -91,10 +91,13 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
           <label for="priority">Priority</label>
+          <!-- v-model does apply on the global element, not on option -->
           <select
           id="priority"
-          class="form-control">
-          <option></option>
+          class="form-control"
+          v-model="selectedPriority">
+          <!-- :selected is always overridden when v-model has a default value -->
+          <option v-for="priority in priorities" :selected="priority == 'Low'">{{ priority }}</option>
         </select>
       </div>
     </div>
@@ -125,7 +128,7 @@
           <li v-for="newsletter in newsletters">{{ newsletter }}</li>
         </ul>
         <p>Gender: {{ gender }}</p>
-        <p>Priority:</p>
+        <p>Priority: {{ selectedPriority }}</p>
         <p>Switched:</p>
       </div>
     </div>
@@ -145,7 +148,9 @@ export default {
       },
       message: 'A short message',
       newsletters: [],
-      gender: ''
+      gender: '',
+      priorities: ['High', 'Medium', 'Low'],
+      selectedPriority: 'Medium'
     }
   }
 }
