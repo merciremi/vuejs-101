@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       user: {
-        fullName: 'Remi MErcier',
+        fullName: '',
         email: '',
         password: '',
         storeData: ''
