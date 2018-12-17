@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <!-- Exercise 1 -->
-            <appFullName :user="user"></appFullName>
+            <appFullName v-model="user.fullName"></appFullName>
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" id="email" class="form-control" v-model="user.email">
@@ -37,7 +37,7 @@
             <h4>Your Data</h4>
           </div>
           <div class="panel-body">
-            <p>Full Name: {{ fullName }}</p>
+            <p>Full Name: {{ user.fullName }}</p>
             <p>Mail: {{ user.email }}</p>
             <p>Password: {{ user.password }}</p>
             <p>Store in Database?: {{ user.storeData }}</p>
@@ -55,18 +55,12 @@ export default {
   data() {
     return {
       user: {
-        firstName: '',
-        lastName: '',
+        fullName: 'Remi MErcier',
         email: '',
         password: '',
         storeData: ''
       },
       submitted: false
-    }
-  },
-  computed: {
-    fullName() {
-      return this.user.firstName + ' ' + this.user.lastName;
     }
   },
   components: {
