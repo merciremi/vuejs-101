@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1">
         <h1 class="title">Directives</h1>
         <hr>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1">
         <h2>Built-in directives</h2>
         <p v-text="'Some text in a v-if directive'"></p>
         <p v-html="'<strong>Some html in a v-html directive (that should be sanitized).</strong>'"></p>
@@ -17,15 +17,17 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1">
         <h2>Custom directives</h2>
         <div class="focus-block">
           <p v-highlight>Paragraph colored with a custom directive</p>
           <p v-highlightRed="'rgba(106,216,106,1)'">Paragraph colored with a custom directive <strong>passing a value</strong></p>
-          <p v-highlightArgument:background="'rgba(255, 255, 126, 1)'">Paragraph with a custom directive <strong>passing a :background argument</strong> to determine which - between background or font - should be colored</p>
-          <p v-highlightArgument="'rgba(255, 255, 126, 1)'">Same paragraph <strong>without the :background argument</strong></p>
+          <p v-highlightArgument:background="'rgba(247, 202, 24, 1)'">Paragraph with a custom directive <strong>passing a :background argument</strong> to determine which - between background or font - should be colored</p>
+          <p v-highlightArgument="'rgba(247, 202, 24, 1)'">Same paragraph <strong>without the :background argument</strong></p>
           <!-- It is possible to chain modifiers -->
           <p v-highlightModifier.delayed="'rgba(106,216,106,1)'">This paragraph has a <code>delayed</code> modifier and should coloured after 3 seconds.</p>
+          <p v-local-highlight.delayed="'rgba(247, 202, 24, 1)'">This paragraph has a local<code>delayed</code> modifier and should coloured after 3 seconds.</p>
+          <p v-local-highlight.delayed.blink="'rgba(106,216,106,1)'">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p>
         </div>
         <div class="output">
           <strong>The five directives' hooks:</strong>
@@ -50,6 +52,31 @@ export default {
   data() {
     return {
       userChoice: ''
+    }
+  },
+  directives: {
+    'local-highlight': {
+      bind(el, binding, vnode) {
+        let delay = 0;
+        // modifiers can be found in the .modifiers object
+        if (binding.modifiers['delayed']) {
+          delay = 3000;
+        }
+        setTimeout(() => {
+          el.style.backgroundColor = binding.value;
+          if (binding.modifiers['blink']) {
+            let mainColor = binding.value;
+            let secondColor = 'rgba(129, 207, 224, 1)';
+            let currentColor = mainColor;
+
+            setInterval(() => {
+              currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
+              el.style.backgroundColor = currentColor;
+            },1000);
+          }
+        }, delay);
+
+      }
     }
   }
 };
@@ -81,7 +108,7 @@ footer {
 
 .title {
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 .title h1 {
@@ -101,6 +128,10 @@ footer {
 
 .focus-block {
   margin: 50px 0;
+}
+
+.focus-block p {
+  margin: 30px 0;
 }
 
 </style>
