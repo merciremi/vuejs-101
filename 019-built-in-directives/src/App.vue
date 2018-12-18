@@ -27,7 +27,7 @@
           <!-- It is possible to chain modifiers -->
           <p v-highlightModifier.delayed="'rgba(106,216,106,1)'">This paragraph has a <code>delayed</code> modifier and should coloured after 3 seconds.</p>
           <p v-local-highlight.delayed="'rgba(247, 202, 24, 1)'">This paragraph has a local<code>delayed</code> modifier and should coloured after 3 seconds.</p>
-          <p v-local-highlight.delayed.blink="'rgba(106,216,106,1)'">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p>
+          <p v-local-highlight.delayed.blink="{mainColor: 'rgba(106,216,106,1)', secondColor: 'rgba(129, 207, 224, 1)'}">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p>
         </div>
         <div class="output">
           <strong>The five directives' hooks:</strong>
@@ -65,8 +65,8 @@ export default {
         setTimeout(() => {
           el.style.backgroundColor = binding.value;
           if (binding.modifiers['blink']) {
-            let mainColor = binding.value;
-            let secondColor = 'rgba(129, 207, 224, 1)';
+            let mainColor = binding.value.mainColor;
+            let secondColor = binding.value.secondColor;
             let currentColor = mainColor;
 
             setInterval(() => {
