@@ -42,9 +42,10 @@
         </div>
       </div>
     </div>
+    <footer>
+      <p>Made with ❤️ and 💻 by Rémi Mercier in <span class="date">{{ new Date().getFullYear() }}</span></p>
+    </footer>
   </div>
-</div>
-</div>
 </template>
 
 <script>
@@ -104,6 +105,8 @@ hr {
 
 footer {
   margin-top: 40px;
+  padding-top: 20px;
+  border-top: 3px solid rgba(106,216,106,0.2);
 }
 
 .title {
@@ -133,5 +136,9 @@ footer {
 .focus-block p {
   margin: 30px 0;
 }
+
+.date {
+    border-bottom: 3px solid rgba(106,216,106,0.5);
+  }
 
 </style>
