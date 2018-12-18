@@ -27,10 +27,18 @@
           <!-- It is possible to chain modifiers -->
           <p v-highlightModifier.delayed="'rgba(106,216,106,1)'">This paragraph has a <code>delayed</code> modifier and should coloured after 3 seconds.</p>
           <p v-local-highlight.delayed="'rgba(247, 202, 24, 1)'">This paragraph has a local<code>delayed</code> modifier and should coloured after 3 seconds.</p>
-          <p v-on:click="reverseText($event)" class="underlined">
+          <!-- reverseText($event) -->
+
+
+
+          <p v-myOn:click="reverseText" class="underlined">
             <span v-if="reversedString.length == 0">Click to reverse the text of this paragraph. There's a custom <code>v-on</code> on it.</span>
             <span v-else>{{ reversedString }}</span>
           </p>
+
+
+
+
           <!--
           <p v-local-highlight.delayed.blink="{mainColor: 'rgba(106,216,106,1)', secondColor: 'rgba(129, 207, 224, 1)'}">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p> -->
         </div>
@@ -62,9 +70,8 @@ export default {
     }
   },
   methods: {
-    reverseText(event) {
-      let string = event.target.innerText;
-      this.reversedString = Array.from(string).reverse().join('');
+    reverseText(value) {
+      this.reversedString = Array.from(value).reverse().join('');
     }
   },
   directives: {
@@ -88,7 +95,15 @@ export default {
             },1000);
           }
         }, delay);
-
+      }
+    },
+    'myOn': {
+      bind(el, binding, vnode){
+        // It is necessary to add the reverseText() in a callback
+        // otherwise it triggers instantly
+        el.addEventListener(binding.arg, () => {
+          binding.value(el.innerText);
+        })
       }
     }
   }
