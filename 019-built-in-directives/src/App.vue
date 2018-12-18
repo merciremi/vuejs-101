@@ -24,6 +24,8 @@
           <p v-highlightRed="'rgba(106,216,106,1)'">Paragraph colored with a custom directive <strong>passing a value</strong></p>
           <p v-highlightArgument:background="'rgba(255, 255, 126, 1)'">Paragraph with a custom directive <strong>passing a :background argument</strong> to determine which - between background or font - should be colored</p>
           <p v-highlightArgument="'rgba(255, 255, 126, 1)'">Same paragraph <strong>without the :background argument</strong></p>
+          <!-- It is possible to chain modifiers -->
+          <p v-highlightModifier.delayed="'rgba(106,216,106,1)'">This paragraph has a <code>delayed</code> modifier and should coloured after 3 seconds.</p>
         </div>
         <div class="output">
           <strong>The five directives' hooks:</strong>

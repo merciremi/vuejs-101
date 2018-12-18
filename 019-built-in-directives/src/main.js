@@ -25,6 +25,20 @@ Vue.directive('highlightArgument', {
   }
 });
 
+Vue.directive('highlightModifier', {
+  bind(el, binding, vnode) {
+    let delay = 0;
+    // modifiers can be found in the .modifiers object
+    if (binding.modifiers['delayed']) {
+      delay = 3000;
+    }
+
+    setTimeout(() => {
+      el.style.backgroundColor = binding.value;
+    }, delay);
+  }
+});
+
 new Vue({
   render: h => h(App),
 }).$mount('#app');
