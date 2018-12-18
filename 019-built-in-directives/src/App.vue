@@ -27,20 +27,11 @@
           <!-- It is possible to chain modifiers -->
           <p v-highlightModifier.delayed="'rgba(106,216,106,1)'">This paragraph has a <code>delayed</code> modifier and should coloured after 3 seconds.</p>
           <p v-local-highlight.delayed="'rgba(247, 202, 24, 1)'">This paragraph has a local<code>delayed</code> modifier and should coloured after 3 seconds.</p>
-          <!-- reverseText($event) -->
-
-
-
+          <p v-local-highlight.delayed.blink="{mainColor: 'rgba(106,216,106,1)', secondColor: 'rgba(129, 207, 224, 1)'}">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p>
           <p v-myOn:click="reverseText" class="underlined">
             <span v-if="reversedString.length == 0">Click to reverse the text of this paragraph. There's a custom <code>v-on</code> on it.</span>
             <span v-else>{{ reversedString }}</span>
           </p>
-
-
-
-
-          <!--
-          <p v-local-highlight.delayed.blink="{mainColor: 'rgba(106,216,106,1)', secondColor: 'rgba(129, 207, 224, 1)'}">This paragraph has two local modifiers (<code>delayed</code> and <code>blink</code>).</p> -->
         </div>
         <div class="output">
           <strong>The five directives' hooks:</strong>
